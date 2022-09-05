@@ -11,16 +11,9 @@
   
   #table-footer {
     width: 80%;
-    display: flex;
-    justify-content: space-evenly;
-    align-self: center
-  }
-  
-  @media (max-width: 800px) {
-  
-    #table-footer {
-      display: inline;
-    }
+    display: inline;
+    align-self: center;
+    text-align: center;
   }
   
   .table-header__section {
@@ -60,7 +53,7 @@
     width: 80%;
     margin: 0 auto;
     display: table;
-    padding: 0 0 8em 0;
+    padding: 0 0 4em 0;
     user-select: none;
 }
 

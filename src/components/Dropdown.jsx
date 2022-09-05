@@ -101,7 +101,7 @@ const Dropdown = ({ options, onChange, listItemType, icon }) => {
                 {listItemType === 'text' ?
                   option :
                   <>
-                    <input type='checkbox' name={option} defaultChecked={options.find(o => o.value === option).defaultSelected} />
+                    <input type='checkbox' id={option} name={option} defaultChecked={options.find(o => o.value === option).defaultSelected} />
                     <label htmlFor={option}>{options.find(o => o.value === option).title}</label>
                   </>}
               </li>

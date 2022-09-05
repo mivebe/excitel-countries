@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react'
 import useLongPress from '../utils/useLongPress';
-import '../styles/Button.css'
-
-// Components
-import TableContent from './TableContent';
-import Dropdown from './Dropdown';
-import Search from './Search'
 
 // Icons & Styles
 import filterIcon from '../resources/icons/filter.png';
+import '../styles/Button.css'
+
+// Components
+import Dropdown from './Dropdown';
+import Search from './Search'
+import TableContent from './TableContent';
+import PageDisplay from './PageDisplay';
 
 // Utils & Constants
-import { getEntriesToShow } from '../utils/util';
+import { getEntriesToShow, sortCategory } from '../utils/util';
 import { initialCategoriesToShow, filterOptions, initialSortedColumns, itemsPerPageOptions } from "../utils/constants";
 
 const Table = ({ data, handleSearch, handleShowModal }) => {
@@ -36,10 +37,7 @@ const Table = ({ data, handleSearch, handleShowModal }) => {
 
     const handleCategorySort = e => {
         const type = e.target.name;
-        const alreadySorted = isSorted[type]
-        const sortedEntries = !alreadySorted ?
-            [...pagination.entries.sort((a, b) => (a[type] > b[type]) ? 1 : ((b[type] > a[type]) ? -1 : 0))] :
-            [...pagination.entries.sort((a, b) => (a[type] > b[type]) ? -1 : ((b[type] > a[type]) ? 0 : 1))]
+        const sortedEntries = sortCategory(isSorted, pagination.entries, type);
         setPagination({
             ...pagination,
             entries: sortedEntries
@@ -69,7 +67,12 @@ const Table = ({ data, handleSearch, handleShowModal }) => {
     const handleFilter = categoryName => {
         const targetIndex = categoriesToShow.findIndex(entry => entry.name === categoryName);
         const newCategoriesToShow = [...categoriesToShow];
-        newCategoriesToShow.splice(targetIndex, 1);
+        if (targetIndex !== -1) {
+            newCategoriesToShow.splice(targetIndex, 1);
+        } else {
+            const target = initialCategoriesToShow.find(entry => entry.name === categoryName)
+            newCategoriesToShow.push(target)
+        }
         setCategoriesToShow(newCategoriesToShow)
     }
 
@@ -93,7 +96,7 @@ const Table = ({ data, handleSearch, handleShowModal }) => {
                 handleCategorySort={handleCategorySort}
             />
             <div id="table-footer">
-                {[...Array(pagination.pagesCount)]?.map((e, index) => <button className='page-button' key={index + 1} value={index + 1} onClick={handlePageSelect}>{index + 1}</button>)}
+                <PageDisplay pagination={pagination} handlePageSelect={handlePageSelect} />
             </div>
 
         </div>
