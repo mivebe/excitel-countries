@@ -87,7 +87,6 @@ const Dropdown = ({ options, onChange, listItemType, icon }) => {
           onKeyDown={handleListKeyDown}
         >
           {optionsList.map((option, index) =>
-            listItemType === "text" ? (
               <li
                 key={index}
                 id={option}
@@ -99,25 +98,15 @@ const Dropdown = ({ options, onChange, listItemType, icon }) => {
                   handleSelection(index);
                 }}
               >
-                {option}
-              </li>
-            ) : (
-              <li
-                key={index}
-                id={option}
-                role="option"
-                aria-selected={selectedOption === index}
-                tabIndex={0}
-                onKeyDown={handleKeyDown(index)}
-                onClick={() => {
-                  handleSelection(index);
-                }}
-              >
-                <input type='checkbox' name={option} />
-                <label htmlFor={option}>{options.find(o => o.value === option).title}</label>
+                {listItemType === 'text' ?
+                  option :
+                  <>
+                    <input type='checkbox' name={option} defaultChecked={options.find(o => o.value === option).defaultSelected} />
+                    <label htmlFor={option}>{options.find(o => o.value === option).title}</label>
+                  </>}
               </li>
             )
-          )}
+          }
         </ul>
       </div>
     </div>

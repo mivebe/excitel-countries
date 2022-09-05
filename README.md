@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# Excitel countries app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a tiny React/Node Rest application implementing the Excitel countries API.
+It features only public endpoints so you dont need any registration or API keys.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+Search functionlity
+Navigate search
+Debouced search suggestions
+Pagination functionality
+Sorting functinality
+Muative and reversed sorting
+Modal with React Portal
+Responsive table
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Npm install in the root directory
+```bash
+npm install
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Use the provided scripts:
+"start": starting the frontend
+```bash
+npm start
+```
+in addition to
+"server": starting the backend
+```bash
+npm run server
+```
+or the combined script "dev": to do both
+```bash
+npm run dev
+```
 
-### `npm test`
+## Usage
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The main page of the application displays a table with countries information and is the only page of the application, it is SPA after all :D.
+By using either dropdown the user can control the country rows displayed per page or the visible categories.
+By typing in the search field user can get a suggestion on sontries by name. Tapping enter will apply the search.
+Clicking on suggestion will copy the suggested county name in the search field.
+Navigatong to a '/' followed by any country name will apply search with that country name.
+User can navigate through pages via the provided page buttons below
+On clicking and holding for a secound and a half on any row field user will open a window.
+with detailed information about clicked country and receive visual input  for the progress beforehand.
+By clicking on the buttons diwplayin the category name on the columns the user can sort the said column alphabetically.
+Sorting in reversed order and mutative sorting is available.
+Table adapts with window size and hides last column if necessary.
 
-### `npm run build`
+## Technologies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+React.js   ReactRouter
+Node.js Express.js
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## License
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Have fun :P

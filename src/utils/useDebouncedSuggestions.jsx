@@ -1,27 +1,24 @@
 import { useState, useEffect } from "react";
 
 const useDebounce = (value, delay) => {
-    // State and setters for debounced value
+
     const [debouncedValue, setDebouncedValue] = useState(value);
+
     useEffect(() => {
-        // Update debounced value after delay
         const handler = setTimeout(() => {
             const getData = async () => {
                 const response = await fetch(`http://localhost:3001?query=${value}`)
                 const data = await response.json()
-                console.log("data", data);
                 setDebouncedValue(data)
             }
             value && getData()
         }, delay);
-        // Cancel the timeout if value changes (also on delay change or unmount)
-        // This is how we prevent debounced value from updating if value is changed ...
-        // .. within the delay period. Timeout gets cleared and restarted.
+
         return () => {
             clearTimeout(handler);
         };
     },
-        [value, delay] // Only re-call effect if value or delay changes
+        [value, delay]
     );
     return debouncedValue;
 }

@@ -19,7 +19,6 @@ const App = () => {
     (async () => {
       const response = await fetch(`http://localhost:3001?query=${query || urlSearch}`)
       const data = await response.json()
-      console.log("data", data);
       setCountries(data)
     })()
   }, [query, urlSearch])
@@ -28,7 +27,6 @@ const App = () => {
     switch (e.key) {
       case "Enter":
         e.preventDefault();
-        console.log("fromkeydown", searchInput);
         setQuery(searchInput)
         break;
       default:

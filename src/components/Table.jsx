@@ -12,10 +12,11 @@ import filterIcon from '../resources/icons/filter.png';
 
 // Utils & Constants
 import { getEntriesToShow } from '../utils/util';
-import { categoriesToShow, filterOptions, initialSortedColumns, itemsPerPageOptions } from "../utils/constants";
+import { initialCategoriesToShow, filterOptions, initialSortedColumns, itemsPerPageOptions } from "../utils/constants";
 
 const Table = ({ data, handleSearch, handleShowModal }) => {
 
+    const [categoriesToShow, setCategoriesToShow] = useState(initialCategoriesToShow)
     const [isSorted, setIsSorted] = useState(initialSortedColumns)
     const [pagination, setPagination] = useState({
         itemsPerPage: 10,
@@ -24,7 +25,6 @@ const Table = ({ data, handleSearch, handleShowModal }) => {
         entries: getEntriesToShow(data, 1, 10)
     })
 
-
     useEffect(() => {
         setPagination({
             itemsPerPage: 10,
@@ -32,7 +32,7 @@ const Table = ({ data, handleSearch, handleShowModal }) => {
             pagesCount: Math.ceil(data.length / 10),
             entries: getEntriesToShow(data, 1, 10)
         })
-    }, [data])
+    }, [data, categoriesToShow])
 
     const handleCategorySort = e => {
         const type = e.target.name;
@@ -54,7 +54,6 @@ const Table = ({ data, handleSearch, handleShowModal }) => {
             pagesCount: Math.ceil(data.length / selection),
             entries: getEntriesToShow(data, pagination.currentPage, selection)
         })
-        console.log(pagination);
     }
 
     const handlePageSelect = e => {
@@ -67,8 +66,11 @@ const Table = ({ data, handleSearch, handleShowModal }) => {
         })
     }
 
-    const handleFilter = e => {
-        console.log(e);
+    const handleFilter = categoryName => {
+        const targetIndex = categoriesToShow.findIndex(entry => entry.name === categoryName);
+        const newCategoriesToShow = [...categoriesToShow];
+        newCategoriesToShow.splice(targetIndex, 1);
+        setCategoriesToShow(newCategoriesToShow)
     }
 
     const longPressProps = useLongPress({

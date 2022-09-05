@@ -6,12 +6,8 @@ const Search = ({ handleSearch }) => {
 
     const [searchInput, setSearchInput] = useState('')
     const suggestions = useDebouncedSuggestions(searchInput, 1000)
-    console.log("debounce", suggestions);
 
-    const handleSuggestionSelection = e => {
-        console.log('classllist', e);
-        setSearchInput(e.target.getAttribute('value'))
-    }
+    const handleSuggestionSelection = e => setSearchInput(e.target.getAttribute('value'))
 
     return (
         <div className="table-header__section">

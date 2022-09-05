@@ -5,8 +5,6 @@ export const getEntriesToShow = (entries, currentPage, itemsPerPage) => {
     const end = entries.length - 1 > start + itemsPerPage ?
         start + itemsPerPage :
         entries.length
-    // console.log(entries, currentPage, itemsPerPage);
-    // console.log(start, end, entries.slice(start, end));
     return entries.slice(start, end)
 }
 

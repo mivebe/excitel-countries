@@ -1,5 +1,5 @@
 
-export const categoriesToShow = [
+export const initialCategoriesToShow = [
     {
         id:0,
         order: 1,
@@ -37,18 +37,22 @@ export const filterOptions = [
     {
         title: 'Name',
         value: 'name',
+        defaultSelected: true,
     },
     {
         title: 'Capital',
-        value: 'capital',
+        value: 'capitalName',
+        defaultSelected: true,
     },
     {
         title: 'Region',
         value: 'region',
+        defaultSelected: true,
     },
     {
         title: 'Subregion',
         value: 'subregion',
+        defaultSelected: true,
     }
 ];
 

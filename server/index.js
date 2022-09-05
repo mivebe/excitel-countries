@@ -1,4 +1,3 @@
-// const axios = require("axios");
 const fetch = require('node-fetch');
 
 const express = require("express");
@@ -17,15 +16,14 @@ app.get("/", async (req, res) => {
             method: "GET",
         })
         const data = await response.json()
-        // console.log(data);
 
         res.json(data)
 
-    } catch (e) {
+    } catch (err) {
         console.log();
         console.log("AN EXCEPTION OCCURED :(");
-        console.log(e);
-        return e
+        console.log(err);
+        return err
     }
 });
 
