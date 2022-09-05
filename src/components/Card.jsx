@@ -9,18 +9,18 @@ const Card = ({ data }) => (
         <h1>{data.name}</h1>
         <div className="card-body">
             <div className="card-body_row">
-                <p className="tag">{data.name}</p>
-                <p className="tag">{data.capitalName}</p>
+                Country: <p className="tag blue">{data.name}</p>
+                With capital: <p className="tag blue">{data.capitalName}</p>
             </div>
             <div className="card-body_row">
-                Coordinates: {data.latLng.map(coordinate => <p>{coordinate}</p>)}
+                Coordinates: {data.latLng.map(coordinate => <p className="tag yellow">{coordinate}</p>)}
             </div>
             <p>
-                The current population is of {data.name} is: {data.population}
+                The current population is of {data.name} is: <p className="tag yellow">{data.population}</p>
             </p>
             <div className='card-body_row'>
-                <p className="tag">{data.region}</p>
-                <p className="tag">{data.subregion}</p>
+                Region: <p className="tag red">{data.region}</p>
+                Subregion: <p className="tag red">{data.subregion}</p>
             </div>
         </div>
     </div>

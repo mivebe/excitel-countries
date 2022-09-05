@@ -27,9 +27,13 @@ h2 a {
 }
 
 .blue {
-  color: #185875;
+  background-color: #185875;
 }
 
 .yellow {
-  color: #FFF842;
+  background-color: #D2784E;
+}
+
+.red {
+  background-color: #FB667A;
 }
